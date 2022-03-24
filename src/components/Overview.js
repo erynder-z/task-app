@@ -7,7 +7,9 @@ export const Overview = (props) => {
     <div className="wrapper">
       <ul className="list-title">
         {tasks.map((task) => (
-          <li key={task.id}>{task.text}</li>
+          <li key={task.id}>
+            {props.tasks.indexOf(task) + 1}.) {task.text}
+          </li>
         ))}
       </ul>
     </div>
