@@ -33,3 +33,7 @@ button {
 .wrapper {
   grid-column: 2;
 }
+
+li {
+  list-style: none;
+}
