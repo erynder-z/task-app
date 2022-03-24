@@ -35,6 +35,14 @@ class App extends Component {
     }
   }
 
+  deleteTask(buttonID) {
+    this.setState({
+      tasks: this.state.tasks.filter(function (task) {
+        return task.id !== buttonID;
+      }),
+    });
+  }
+
   render() {
     const { tasks } = this.state;
     return (
@@ -49,7 +57,10 @@ class App extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <button onClick={() => this.handleClick()}>Submit</button>
-          <Overview tasks={tasks}></Overview>
+          <Overview
+            tasks={tasks}
+            delete={this.deleteTask.bind(this)}
+          ></Overview>
         </div>
       </div>
     );
