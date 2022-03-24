@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const Overview = (takslist) => {
-  const taskArray = takslist.tasklist;
+export const Overview = (props) => {
+  const { tasks } = props;
 
   return (
     <div className="wrapper">
       <ul className="list-title">
-        {taskArray.map((task) => (
-          <li key={task}>{task}</li>
+        {tasks.map((task) => (
+          <li key={task.id}>{task.text}</li>
         ))}
       </ul>
     </div>
