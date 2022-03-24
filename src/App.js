@@ -20,6 +20,7 @@ class App extends Component {
     this.setState({ tasks: [...this.state.tasks, this.state.input] }, () => {
       console.log(this.state.tasks);
     });
+    this.setState({ input: '' });
     document.getElementById('inputField').value = '';
   }
 
