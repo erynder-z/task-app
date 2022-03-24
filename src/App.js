@@ -17,11 +17,15 @@ class App extends Component {
 
   handleClick() {
     /* this.setState({ task: this.state.input }); */
-    this.setState({ tasks: [...this.state.tasks, this.state.input] }, () => {
-      console.log(this.state.tasks);
-    });
-    this.setState({ input: '' });
-    document.getElementById('inputField').value = '';
+    if (this.state.input !== '') {
+      this.setState({ tasks: [...this.state.tasks, this.state.input] }, () => {
+        console.log(this.state.tasks);
+      });
+      this.setState({ input: '' });
+      document.getElementById('inputField').value = '';
+    } else {
+      alert('no input');
+    }
   }
 
   render() {
