@@ -4,7 +4,7 @@ export const Overview = (takslist) => {
   const taskArray = takslist.tasklist;
 
   return (
-    <div className="container">
+    <div className="wrapper">
       <ul className="list-title">
         {taskArray.map((task) => (
           <li key={task}>{task}</li>

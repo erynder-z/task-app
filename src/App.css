@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(min-content, 1.5rem);
+  padding: 0 25%;
+  background-color: aliceblue;
+  margin: 0;
+  height: 100vh;
+  align-content: flex-start;
+}
+
+label {
+  grid-column: 1/-1;
+  grid-row: 1;
+  text-align: center;
+  height: 1rem;
+}
+
+input {
+  grid-column: 1/-1;
+  grid-row: 2;
+  height: 1rem;
+}
+
+button {
+  grid-column: 2;
+  grid-row: 3;
+  height: 1.2rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.wrapper {
+  grid-column: 2;
+}
