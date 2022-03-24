@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Overview } from './components/Overview';
 import './App.css';
 import uniqid from 'uniqid';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -56,6 +57,10 @@ class App extends Component {
 }
 
 export default App;
+
+App.propTypes = {
+  text: PropTypes.string,
+};
 
 // 1 Return skeleton JSX. Destructure state for cleaner code.
 // 2 Define a task-object in state, containing the keys "text" and "id"
