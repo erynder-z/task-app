@@ -16,9 +16,10 @@ class App extends Component {
   }
 
   handleClick() {
+    const { tasks, input } = this.state;
     /* this.setState({ task: this.state.input }); */
-    if (this.state.input !== '') {
-      this.setState({ tasks: [...this.state.tasks, this.state.input] }, () => {
+    if (input !== '') {
+      this.setState({ tasks: [...tasks, input] }, () => {
         console.log(this.state.tasks);
       });
       this.setState({ input: '' });
@@ -29,6 +30,7 @@ class App extends Component {
   }
 
   render() {
+    const { tasks } = this.state;
     return (
       <div>
         <div className="container">
@@ -41,8 +43,7 @@ class App extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <button onClick={() => this.handleClick()}>Submit</button>
-          <h1>{this.state.task}</h1>
-          <Overview tasklist={this.state.tasks}></Overview>
+          <Overview tasklist={tasks}></Overview>
           {/* <Overview tasklist={this.state.tasks}></Overview> */}
         </div>
       </div>
@@ -52,7 +53,7 @@ class App extends Component {
 
 export default App;
 
-// 1 Return skeleton JSX
+// 1 Return skeleton JSX & set needed state
 // 2 Set eventhandler on input field to execute handleChange on every event(input)
 // 3 handleChange: set state of a temporary "input" key to be the current text in the input field
 // 4 Set eventhandler on submit button to excute handleClick
