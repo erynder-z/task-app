@@ -31,7 +31,8 @@ button {
 }
 
 .wrapper {
-  grid-column: 2;
+  grid-column: 1/-1;
+  text-align: center;
 }
 
 li {
