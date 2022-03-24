@@ -36,7 +36,8 @@ class App extends Component {
           />
           <button onClick={() => this.handleClick()}>Submit</button>
           <h1>{this.state.task}</h1>
-          <Overview></Overview>
+          <Overview tasklist={this.state.tasks}></Overview>
+          {/* <Overview tasklist={this.state.tasks}></Overview> */}
         </div>
       </div>
     );
@@ -51,3 +52,5 @@ export default App;
 // 4 Set eventhandler on submit button to excute handleClick
 // 5 handleClick: add the current state.input to the state.tasks-array
 // !! SETSTATE IS ASYNC !!
+// 6 Pass in state.tasks as props to Overview component
+// 7 return each task via map-method in Overview component
