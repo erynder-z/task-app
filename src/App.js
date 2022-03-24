@@ -57,11 +57,12 @@ class App extends Component {
 
 export default App;
 
-// 1 Return skeleton JSX & set needed state. Destructure state for cleaner code.
-// 2 Set eventhandler on input field to execute handleChange on every event(input)
-// 3 handleChange: set state of a temporary "input" key to be the current text in the input field
-// 4 Set eventhandler on submit button to excute handleClick
-// 5 handleClick: add the current state.input to the state.tasks-array
+// 1 Return skeleton JSX. Destructure state for cleaner code.
+// 2 Define a task-object in state, containing the keys "text" and "id"
+// 3 Set eventhandler on input field to execute handleChange on every event(input)
+// 4 handleChange: set state "text" key to be the current text in the input field
+// 5 Set eventhandler on submit button to excute handleClick
+// 6 handleClick: add the current task-object to the state.tasks - array
 // !! SETSTATE IS ASYNC !!
-// 6 Pass in state.tasks as props to Overview component
-// 7 return each task via map-method in Overview component
+// 7 Pass in state.tasks as props to Overview component
+// 8 return each task via map-method in Overview component
