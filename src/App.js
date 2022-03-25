@@ -11,6 +11,7 @@ class App extends Component {
       task: {
         text: '',
         id: uniqid(),
+        edit: false,
       },
       tasks: [],
     };
@@ -20,11 +21,26 @@ class App extends Component {
     this.setState({ task: { text: e.target.value, id: this.state.task.id } });
   }
 
+  updateTask(e, buttonID) {
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.id === buttonID) {
+          task.text = e.target.previousElementSibling.value;
+          task.edit = false;
+        }
+        return task;
+      }),
+    });
+  }
+
   handleClick() {
     const { tasks, task } = this.state;
     if (task.text !== '') {
       this.setState(
-        { tasks: [...tasks, task], task: { text: '', id: uniqid() } },
+        {
+          tasks: [...tasks, task],
+          task: { text: '', id: uniqid(), edit: false },
+        },
         () => {
           console.log(this.state);
         }
@@ -39,6 +55,19 @@ class App extends Component {
     this.setState({
       tasks: this.state.tasks.filter(function (task) {
         return task.id !== buttonID;
+      }),
+    });
+  }
+
+  editTask(e, buttonID) {
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.id === buttonID) {
+          task.edit = true;
+        } else {
+          task.edit = false;
+        }
+        return task;
       }),
     });
   }
@@ -59,7 +88,14 @@ class App extends Component {
           <button onClick={() => this.handleClick()}>Submit</button>
           <Overview
             tasks={tasks}
-            delete={this.deleteTask.bind(this)}
+            edit={(e, buttonID) => {
+              this.editTask(e, buttonID);
+            }}
+            delete={this.deleteTask.bind(this)} // refactor to arrow function
+            change={(e) => {
+              this.handleChange(e);
+            }}
+            submitChange={(e, buttonID) => this.updateTask(e, buttonID)}
           ></Overview>
         </div>
       </div>
