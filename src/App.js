@@ -17,10 +17,12 @@ class App extends Component {
     };
   }
 
+  // updates state every time something is entered in the input field
   handleChange(e) {
     this.setState({ task: { text: e.target.value, id: this.state.task.id } });
   }
 
+  // update a task when the submit button is pressed
   updateTask(e, buttonID) {
     this.setState({
       tasks: this.state.tasks.map((task) => {
@@ -33,6 +35,7 @@ class App extends Component {
     });
   }
 
+  // updates state rebumbit button is pressed
   handleClick() {
     const { tasks, task } = this.state;
     if (task.text !== '') {
@@ -51,6 +54,7 @@ class App extends Component {
     }
   }
 
+  // delete task when delete button is pressed
   deleteTask(buttonID) {
     this.setState({
       tasks: this.state.tasks.filter(function (task) {
@@ -59,6 +63,7 @@ class App extends Component {
     });
   }
 
+  // make task editable when clicking on edit button
   editTask(e, buttonID) {
     this.setState({
       tasks: this.state.tasks.map((task) => {
