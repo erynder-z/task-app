@@ -26,7 +26,7 @@ export const Overview = (props) => {
                     props.submitChange(e, task.id);
                   }}
                 >
-                  SUBMIT
+                  RESUBMIT
                 </button>
                 <button
                   key={'ed-del-' + task.id}
