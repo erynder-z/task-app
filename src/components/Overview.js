@@ -4,64 +4,81 @@ export const Overview = (props) => {
   const { tasks } = props;
 
   return (
-    <div className="wrapper">
-      <ul className="list-title">
+    <div className="list-wrapper">
+      <div className="list-title">
         {tasks.map((task) => {
           if (task.edit === true) {
             return (
-              <li key={task.id}>
-                <input
-                  key={'input-' + task.id}
-                  type="text"
-                  name="taskEdit"
-                  id="editField"
-                  placeholder={task.text}
-                  onChange={(e) => {
-                    props.change(e);
-                  }}
-                ></input>
+              <div key={task.id} className="card">
+                <div className="task-wrapper">
+                  <div className="card-side"></div>
+                  <input
+                    className="edit-task-input"
+                    key={'input-' + task.id}
+                    type="text"
+                    name="taskEdit"
+                    id="editField"
+                    placeholder={task.text}
+                    onChange={(e) => {
+                      props.change(e);
+                    }}
+                  ></input>
+                </div>
+                <div className="btn-wrapper">
+                  <button
+                    className="resubmit-task"
+                    key={'submit-' + task.id}
+                    onClick={(e) => {
+                      props.submitChange(e, task.id);
+                    }}
+                  >
+                    RESUBMIT
+                  </button>
+                  <button
+                    className="delete-task"
+                    key={'ed-del-' + task.id}
+                    onClick={() => {
+                      props.delete(task.id);
+                    }}
+                  >
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div key={task.id} className="card">
+              <div className="task-wrapper">
+                <div className="card-side">
+                  {props.tasks.indexOf(task) + 1}{' '}
+                </div>
+                <h4>{task.text} </h4>
+              </div>
+              <div className="btn-wrapper">
                 <button
-                  key={'submit-' + task.id}
+                  className="edit-task"
+                  key={'edit-' + task.id}
                   onClick={(e) => {
-                    props.submitChange(e, task.id);
+                    props.edit(e, task.id);
                   }}
                 >
-                  RESUBMIT
+                  EDIT
                 </button>
                 <button
-                  key={'ed-del-' + task.id}
+                  className="delete-task"
+                  key={'del-' + task.id}
                   onClick={() => {
                     props.delete(task.id);
                   }}
                 >
                   DELETE
                 </button>
-              </li>
-            );
-          }
-          return (
-            <li key={task.id}>
-              {props.tasks.indexOf(task) + 1}.) {task.text}{' '}
-              <button
-                key={'edit-' + task.id}
-                onClick={(e) => {
-                  props.edit(e, task.id);
-                }}
-              >
-                EDIT
-              </button>
-              <button
-                key={'del-' + task.id}
-                onClick={() => {
-                  props.delete(task.id);
-                }}
-              >
-                DELETE
-              </button>
-            </li>
+              </div>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };

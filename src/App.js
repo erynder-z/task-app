@@ -27,7 +27,8 @@ class App extends Component {
     this.setState({
       tasks: this.state.tasks.map((task) => {
         if (task.id === taskID) {
-          task.text = e.target.previousElementSibling.value;
+          task.text =
+            e.target.parentNode.previousElementSibling.childNodes[1].value;
           task.edit = false;
         }
         return task;
@@ -82,15 +83,19 @@ class App extends Component {
     return (
       <div>
         <div className="container">
-          <label htmlFor="taskInput">Input Task</label>
           <input
+            className="input-task"
             type="text"
             name="taskInput"
             id="inputField"
+            placeholder="add Task"
             /* onChange={this.handleChange.bind(this)} */
             onChange={(e) => this.handleChange(e)}
           />
-          <button onClick={() => this.handleClick()}>Submit</button>
+          <button className="submit-task" onClick={() => this.handleClick()}>
+            Submit
+          </button>
+
           <Overview
             tasks={tasks}
             edit={(e, taskID) => {
