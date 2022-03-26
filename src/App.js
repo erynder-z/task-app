@@ -96,7 +96,9 @@ class App extends Component {
             edit={(e, buttonID) => {
               this.editTask(e, buttonID);
             }}
-            delete={this.deleteTask.bind(this)} // refactor to arrow function
+            delete={(buttonID) => {
+              this.deleteTask(buttonID);
+            }}
             change={(e) => {
               this.handleChange(e);
             }}
