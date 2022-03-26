@@ -45,7 +45,7 @@ class App extends Component {
           task: { text: '', id: uniqid(), edit: false },
         },
         () => {
-          console.log(this.state);
+          console.log(this.state); // since setState is async, code that needs to run after state has been updated must be executed as a callback function
         }
       );
       document.getElementById('inputField').value = '';
