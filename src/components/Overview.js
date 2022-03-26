@@ -9,7 +9,7 @@ export const Overview = (props) => {
         {tasks.map((task) => {
           if (task.edit === true) {
             return (
-              <>
+              <li key={task.id}>
                 <input
                   key={'input-' + task.id}
                   type="text"
@@ -36,7 +36,7 @@ export const Overview = (props) => {
                 >
                   DELETE
                 </button>
-              </>
+              </li>
             );
           }
           return (
