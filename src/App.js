@@ -114,6 +114,8 @@ export default App;
 
 App.propTypes = {
   text: PropTypes.string,
+  id: PropTypes.string,
+  edit: PropTypes.bool,
 };
 
 // 1 Return skeleton JSX. Destructure state for cleaner code.
