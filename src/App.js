@@ -23,10 +23,10 @@ class App extends Component {
   }
 
   // update a task when the submit button is pressed
-  updateTask(e, buttonID) {
+  updateTask(e, taskID) {
     this.setState({
       tasks: this.state.tasks.map((task) => {
-        if (task.id === buttonID) {
+        if (task.id === taskID) {
           task.text = e.target.previousElementSibling.value;
           task.edit = false;
         }
@@ -55,19 +55,19 @@ class App extends Component {
   }
 
   // delete task when delete button is pressed
-  deleteTask(buttonID) {
+  deleteTask(taskID) {
     this.setState({
       tasks: this.state.tasks.filter(function (task) {
-        return task.id !== buttonID;
+        return task.id !== taskID;
       }),
     });
   }
 
   // make task editable when clicking on edit button
-  editTask(e, buttonID) {
+  editTask(e, taskID) {
     this.setState({
       tasks: this.state.tasks.map((task) => {
-        if (task.id === buttonID) {
+        if (task.id === taskID) {
           task.edit = true;
         } else {
           task.edit = false;
@@ -93,16 +93,16 @@ class App extends Component {
           <button onClick={() => this.handleClick()}>Submit</button>
           <Overview
             tasks={tasks}
-            edit={(e, buttonID) => {
-              this.editTask(e, buttonID);
+            edit={(e, taskID) => {
+              this.editTask(e, taskID);
             }}
-            delete={(buttonID) => {
-              this.deleteTask(buttonID);
+            delete={(taskID) => {
+              this.deleteTask(taskID);
             }}
             change={(e) => {
               this.handleChange(e);
             }}
-            submitChange={(e, buttonID) => this.updateTask(e, buttonID)}
+            submitChange={(e, taskID) => this.updateTask(e, taskID)}
           ></Overview>
         </div>
       </div>
